@@ -1,0 +1,168 @@
+@charset "UTF-8";
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+body {
+  font-family: roboto, sans-serif;
+  font-size: 18px;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+  font-family: pota one;
+  letter-spacing: 0.2em;
+}
+
+h2 {
+  font-weight: 900;
+}
+
+h3 {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+p {
+  padding: 15px;
+  text-align: center;
+  line-height: 1.6;
+}
+
+main {
+  background-color: #f2f2f2;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+  font-size: 3em;
+  background-color: black;
+  padding: 30px 0;
+}
+
+footer {
+  background-color: black;
+  color: white;
+  width: 100%;
+  padding: 20px 0;
+  text-align: center;
+}
+footer .boxIcone {
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-around;
+  flex-flow: wrap;
+}
+footer i {
+  font-size: 2em;
+}
+
+.card {
+  padding: 10px;
+  margin-top: 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 9px 10px lightgray;
+}
+.card h3 {
+  padding: 15px 0 0 15px;
+  position: relative;
+}
+.card h3::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 15px;
+  width: 50px;
+  border-bottom: 2px solid #22e061;
+}
+.card img {
+  margin: 30px 0 20px 0;
+  width: 100%;
+}
+.card i {
+  display: block;
+  text-align: right;
+  padding: 10px 10px 20px 0;
+  font-size: 1.3em;
+}
+.card i::after {
+  content: " €";
+}
+
+.section2 {
+  background-color: white;
+  padding: 50px 0;
+}
+.section2 h2 {
+  font-size: 2.2em;
+  line-height: 1.6;
+  padding-left: 15px;
+}
+.section2 i {
+  font-size: 3em;
+  display: block;
+  margin: auto;
+}
+
+.sectionIcone {
+  width: 100%;
+  text-align: center;
+  font-size: 4em;
+  padding: 30px 0;
+}
+
+#wrapperItems {
+  background-color: white;
+  padding: 0px 15px 50px 15px;
+}
+
+/*# sourceMappingURL=style.css.map */

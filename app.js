@@ -36,3 +36,17 @@ app.use('/api/teddies', teddyRoutes);
 app.use('/api/furniture', furnitureRoutes);
 
 module.exports = app;
+
+
+
+
+var request = new XMLHttpRequest();
+request.onreadystatechange = function() {
+    if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
+         var response = JSON.parse(this.responseText);
+        document.getElementById("resultat").innerHTML = response[0] 
+        console.log("alool");
+    }
+};
+request.open("GET", "http://localhost:3000/api/teddies",true);
+request.send(); 

@@ -1,0 +1,20 @@
+
+footer{
+    background-color: black;
+    color: white;
+    width: 100%;
+    padding: 20px 0;
+    text-align: center;
+    
+    
+    .boxIcone{
+        margin: 10px 0;
+        display: flex;
+        justify-content: space-around;
+        flex-flow: wrap;
+        
+    }
+    i{
+        font-size: 2em;
+    }
+}
