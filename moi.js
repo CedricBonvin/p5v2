@@ -8,9 +8,7 @@ request.onreadystatechange = function() {
 
         let WrapperItems = document.getElementById("wrapperItems")
         let result = JSON.parse(request.responseText);
-        console.log(result)
-
-       
+     
         for (let i in result){
             
             //  Création des éléments
@@ -51,17 +49,12 @@ request.onreadystatechange = function() {
                 let nom = result[i].name;
                 if (check.classList.contains("check") === true){
     
-                    let nom = result[i].name;
-                    console.log("yes check")
-                    
+                    console.log("yes check")  
                     localStorage.setItem(nom,JSON.stringify(result[i]));      
     
                 }else 
                 localStorage.removeItem(nom,JSON.stringify(result[i]));      
             })
-            
-
-
         }
     }
 };
