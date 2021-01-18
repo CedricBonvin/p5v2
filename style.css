@@ -49,6 +49,10 @@ table {
   border-spacing: 0;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 main {
   background-color: #f2f2f2;
 }
@@ -237,6 +241,34 @@ footer i {
   padding: 10px 15px;
   border-radius: 50px;
   background-color: #22ab4d;
+}
+
+.wrapperForm {
+  padding: 0 15px;
+}
+
+.formulaire .formInput {
+  display: block;
+  width: 100%;
+  margin-top: 5px;
+  padding: 5px 5px;
+  background-color: white;
+  font-size: 1em;
+}
+.formulaire .formLabel {
+  position: relative;
+  padding-left: 10px;
+  width: 100%;
+}
+.formulaire .formLabel::after {
+  content: "*";
+  position: absolute;
+  top: 0;
+  left: 0px;
+  color: red;
+}
+.formulaire div {
+  margin: 20px 0;
 }
 
 /*# sourceMappingURL=style.css.map */
