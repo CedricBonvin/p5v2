@@ -2,13 +2,15 @@
 
 let request = new XMLHttpRequest();
 
+
 request.onreadystatechange = function() {
     if (request.readyState === 4) {
 
         let WrapperItems = document.getElementById("wrapperItems")
         let result = JSON.parse(request.responseText);
         console.log(result)
-      
+
+       
         for (let i in result){
             
             //  Création des éléments
@@ -42,22 +44,24 @@ request.onreadystatechange = function() {
 
             // Récupération des données des ITEMS au click
 
+
             article.addEventListener("click", function(){
-                
                 check.classList.toggle("check");
+                
                 let nom = result[i].name;
-         
-
-                
-                
-                if (check.classList.contains("check")){
-                    console.log("contient check");
-
+                if (check.classList.contains("check") === true){
+    
+                    let nom = result[i].name;
+                    console.log("yes check")
                     
-                 localStorage.setItem(nom,JSON.stringify(result[i]));
-                    
-                }
+                    localStorage.setItem(nom,JSON.stringify(result[i]));      
+    
+                }else 
+                localStorage.removeItem(nom,JSON.stringify(result[i]));      
             })
+            
+
+
         }
     }
 };

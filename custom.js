@@ -8,8 +8,6 @@ for (let i = 0; i<localStorage.length; i++){
 
     let itemJS = JSON.parse (localStorage.getItem(localStorage.key(i)));
 
-    localStorage.clear()
-
     // CREATION DE LA CARTE 
 
     let el = document.createElement("div");
