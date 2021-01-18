@@ -1,4 +1,5 @@
 
+
 let request = new XMLHttpRequest();
 
 request.onreadystatechange = function() {
@@ -6,27 +7,57 @@ request.onreadystatechange = function() {
 
         let WrapperItems = document.getElementById("wrapperItems")
         let result = JSON.parse(request.responseText);
-       
+        console.log(result)
+      
         for (let i in result){
-  
+            
+            //  Création des éléments
+            
             let article = document.createElement("article");
             let cardName = document.createElement("h3");
             let cardImage = document.createElement("img");
             let cardDescription = document.createElement("p");
             let cardPrice = document.createElement("i");
+            let check = document.createElement("div")
+            
+            // Injection du contenu dans les éléments
 
             cardName.innerHTML=(result[i].name);
             cardImage.setAttribute("src", result[i].imageUrl);
             cardDescription.innerHTML=(result[i].description);
             cardPrice.innerHTML=(result[i].price);
 
+            // Injection des éléments dans le DOM
+
             WrapperItems.appendChild(article);
             article.appendChild(cardName);
             article.appendChild(cardImage);
             article.appendChild(cardDescription);
             article.appendChild(cardPrice);
+            article.appendChild(check);
 
-            article.classList.add ("card")
+            // ajout des classes
+
+            article.classList.add ("card");
+
+            // Récupération des données des ITEMS au click
+
+            article.addEventListener("click", function(){
+                
+                check.classList.toggle("check");
+                let nom = result[i].name;
+         
+
+                
+                
+                if (check.classList.contains("check")){
+                    console.log("contient check");
+
+                    
+                 localStorage.setItem(nom,JSON.stringify(result[i]));
+                    
+                }
+            })
         }
     }
 };

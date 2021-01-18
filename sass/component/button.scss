@@ -1,0 +1,23 @@
+.btn{
+    display: block;
+    margin:20px auto;
+    font-size: 1.5em;
+    padding: 10px 20px;
+    color: white;
+    background-color: $color-secondary;
+
+    border-radius: 50px;
+
+    &__couleur{
+        color: white;
+        display: block;
+        margin: auto;
+        font-size: 1.1em;
+        padding: 10px 15px;
+        border-radius: 50px;
+        background-color: $color-primary;
+
+
+    }
+
+}

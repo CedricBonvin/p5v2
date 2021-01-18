@@ -49,6 +49,10 @@ table {
   border-spacing: 0;
 }
 
+main {
+  background-color: #f2f2f2;
+}
+
 body {
   font-family: roboto, sans-serif;
   font-size: 18px;
@@ -77,8 +81,13 @@ p {
   line-height: 1.6;
 }
 
-main {
-  background-color: #f2f2f2;
+a {
+  text-decoration: none;
+}
+
+button {
+  text-decoration: none;
+  border: none;
 }
 
 h1 {
@@ -108,7 +117,8 @@ footer i {
 
 .card {
   padding: 10px;
-  margin-top: 30px;
+  padding-bottom: 0;
+  margin-top: 50px;
   border-radius: 20px;
   box-shadow: 0 0 9px 10px lightgray;
 }
@@ -122,7 +132,7 @@ footer i {
   bottom: -10px;
   left: 15px;
   width: 50px;
-  border-bottom: 2px solid #22e061;
+  border-bottom: 2px solid #22ab4d;
 }
 .card img {
   margin: 30px 0 20px 0;
@@ -137,6 +147,37 @@ footer i {
 .card i::after {
   content: " €";
 }
+.card .check::after {
+  content: "";
+  font-family: "Font Awesome 5 Free";
+  display: inline-block;
+  color: #22ab4d;
+  text-align: center;
+  font-weight: 900;
+  font-size: 2em;
+  width: calc(100% + 20px);
+  margin-left: -10px;
+  padding: 20px 0;
+  background: #525252;
+  border-radius: 0 0 20px 20px;
+  transition: 1s;
+}
+.cardCustom {
+  margin: 40px 0;
+  padding: 30px 15px;
+  border-radius: 20px;
+  background: #ffffff;
+}
+.cardCustom img {
+  width: 100%;
+}
+.cardCustom .prix {
+  text-align: center;
+  padding: 20px 0;
+}
+.cardCustom .prix::after {
+  content: " €";
+}
 
 .section2 {
   background-color: white;
@@ -146,11 +187,6 @@ footer i {
   font-size: 2.2em;
   line-height: 1.6;
   padding-left: 15px;
-}
-.section2 i {
-  font-size: 3em;
-  display: block;
-  margin: auto;
 }
 
 .sectionIcone {
@@ -163,6 +199,29 @@ footer i {
 #wrapperItems {
   background-color: white;
   padding: 0px 15px 50px 15px;
+}
+
+.wrapperItems {
+  padding: 0 15px;
+}
+
+.btn {
+  display: block;
+  margin: 20px auto;
+  font-size: 1.5em;
+  padding: 10px 20px;
+  color: white;
+  background-color: #ab2222;
+  border-radius: 50px;
+}
+.btn__couleur {
+  color: white;
+  display: block;
+  margin: auto;
+  font-size: 1.1em;
+  padding: 10px 15px;
+  border-radius: 50px;
+  background-color: #22ab4d;
 }
 
 /*# sourceMappingURL=style.css.map */
