@@ -33,6 +33,8 @@ for (let i = 0; i<localStorage.length; i++){
     itemValue.classList.add ("prix");
     el.appendChild(itemValue );
 
+  
+
     // BOUTTON SUPPRIMER
 
     let supprimer = document.createElement("button");
@@ -41,18 +43,82 @@ for (let i = 0; i<localStorage.length; i++){
     el.appendChild (supprimer);
 
         supprimer.addEventListener("click",function(){
-            
+
+           if (localStorage.key(i)){
             localStorage.removeItem(localStorage.key(i));
 
             el.style.display =("none")
+             } 
+        //  localStorage.removeItem(localStorage.key(i));
+        // el.style.display =("none")
         })
 
-    //  BOUTTON COMMANDER
+       
 
-    itemValue = document.createElement("button");
-    itemValue.innerHTML = "choisissez votre couleur";
-    itemValue.classList.add ("btn__couleur");
-    el.appendChild(itemValue);  
+    //  BOUTTON CHOISR COULEUR
+
+    bouttonCouleur = document.createElement("button");
+    bouttonCouleur.innerHTML = "choisissez votre couleur";
+    bouttonCouleur.classList.add ("btn__couleur");
+    el.appendChild(bouttonCouleur);  
+
+    // BOX COULEUR
+
+    let boxCouleur = document.createElement("div")
+    boxCouleur.setAttribute("id","boxCouleur")
+    boxCouleur.innerHTML = "Choisissez votre couleur"
+    el.appendChild(boxCouleur)
+    boxCouleur.classList.add("boxCouleur")
+    
+    bouttonCouleur.addEventListener("click",function(){
+        
+
+        boxCouleur.style.opacity = "1"
+        boxCouleur.style.transform = "scaleY(1)"
+        boxCouleur.style.height = "100%"
+        
+    })
+
+    //SELECT
+
+
+    let listeDeroulante = document.createElement("select")
+    boxCouleur.appendChild(listeDeroulante)
+    listeDeroulante.style.marginLeft = "5px"
+
+    
+
+    for (let i = 0; i < itemJS.colors.length; i++){
+        let option = document.createElement("option")
+        option.setAttribute("value",itemJS.colors[i])
+        option.innerHTML = itemJS.colors[i]
+        listeDeroulante.appendChild(option);
+       
+    }
+    // RENDU COULEUR
+
+    let renduCouleur = document.createElement("div");
+    renduCouleur.classList.add("renduCouleur")
+    boxCouleur.appendChild(renduCouleur)
+  
+    
+
+    let choice
+    let valeurCouleur
+
+    renduCouleur.style.background = listeDeroulante.options[0].value
+
+    
+    listeDeroulante.addEventListener("change",function(){
+        
+        choice = listeDeroulante.selectedIndex
+        
+        valeurCouleur = listeDeroulante.options[choice].value
+        renduCouleur.style.background = valeurCouleur
+       
+
+    })
+
 }
 
 

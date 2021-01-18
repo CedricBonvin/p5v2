@@ -165,7 +165,7 @@ footer i {
 
 .cardCustom {
   margin: 40px 0;
-  padding: 30px 15px;
+  padding: 0px 15px;
   border-radius: 20px;
   background: #ffffff;
 }
@@ -178,6 +178,20 @@ footer i {
 }
 .cardCustom .prix::after {
   content: " €";
+}
+.cardCustom .boxCouleur {
+  margin-top: 15px;
+  padding: 10px 15px;
+  border-top: solid 1px black;
+  opacity: 0;
+  transform: scaleY(0);
+  transition: transform 1s;
+}
+.cardCustom .renduCouleur {
+  width: 20px;
+  height: 20px;
+  border: solid 1px black;
+  margin: 10px auto;
 }
 
 .section2 {
@@ -218,7 +232,7 @@ footer i {
 .btn__couleur {
   color: white;
   display: block;
-  margin: auto;
+  margin: 0px auto;
   font-size: 1.1em;
   padding: 10px 15px;
   border-radius: 50px;
