@@ -254,6 +254,9 @@ footer i {
   padding: 5px 5px;
   background-color: white;
   font-size: 1em;
+  border-radius: 5px;
+  box-shadow: 0 0 25px 5px #cdcdcd;
+  border: none;
 }
 .formulaire .formLabel {
   position: relative;
@@ -269,6 +272,48 @@ footer i {
 }
 .formulaire div {
   margin: 20px 0;
+}
+
+.titleBoxPanier {
+  text-align: center;
+  font-size: 1.5em;
+  border-bottom: solid 1px black;
+  padding: 10px 0;
+}
+
+#recup {
+  padding: 0 15px;
+}
+
+.boxItemPanier {
+  display: flex;
+  justify-content: space-evenly;
+  border: solid 1px black;
+  padding: 10px 0;
+  margin: 10px 0;
+}
+.boxItemPanier .boxPrixItem {
+  height: 100%;
+}
+.boxItemPanier .prix::after {
+  content: " €";
+}
+.boxItemPanier .itemImg {
+  width: 100px;
+}
+.boxItemPanier .itemPrice {
+  font-size: 0.6em;
+}
+.boxItemPanier .prixTotalItem {
+  font-weight: bold;
+}
+
+.boxPrixTotal {
+  font-size: 1.5em;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px 15px;
 }
 
 /*# sourceMappingURL=style.css.map */

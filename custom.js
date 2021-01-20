@@ -2,6 +2,7 @@
 
 let recup = document.getElementById("recup");
 
+
 for (let i = 0; i<localStorage.length; i++){
 
     // PARSE DE LOCALSTORAGE
@@ -33,8 +34,6 @@ for (let i = 0; i<localStorage.length; i++){
     itemValue.classList.add ("prix");
     el.appendChild(itemValue );
 
-  
-
     // BOUTTON SUPPRIMER
 
     let supprimer = document.createElement("button");
@@ -51,9 +50,7 @@ for (let i = 0; i<localStorage.length; i++){
              } 
         //  localStorage.removeItem(localStorage.key(i));
         // el.style.display =("none")
-        })
-
-       
+        })      
 
     //  BOUTTON CHOISR COULEUR
 
@@ -62,7 +59,7 @@ for (let i = 0; i<localStorage.length; i++){
     bouttonCouleur.classList.add ("btn__couleur");
     el.appendChild(bouttonCouleur);  
 
-    // BOX COULEUR
+    // ECHANTILLON DE COULEUR
 
     let boxCouleur = document.createElement("div")
     boxCouleur.setAttribute("id","boxCouleur")
@@ -72,21 +69,17 @@ for (let i = 0; i<localStorage.length; i++){
     
     bouttonCouleur.addEventListener("click",function(){
         
-
         boxCouleur.style.opacity = "1"
         boxCouleur.style.transform = "scaleY(1)"
         boxCouleur.style.height = "100%"
         
     })
 
-    //SELECT
-
+    //SELECTION DE LA COULEUR
 
     let listeDeroulante = document.createElement("select")
     boxCouleur.appendChild(listeDeroulante)
     listeDeroulante.style.marginLeft = "5px"
-
-    
 
     for (let i = 0; i < itemJS.colors.length; i++){
         let option = document.createElement("option")
@@ -101,25 +94,20 @@ for (let i = 0; i<localStorage.length; i++){
     renduCouleur.classList.add("renduCouleur")
     boxCouleur.appendChild(renduCouleur)
   
-    
-
     let choice
     let valeurCouleur
 
     renduCouleur.style.background = listeDeroulante.options[0].value
-
-    
+  
     listeDeroulante.addEventListener("change",function(){
         
         choice = listeDeroulante.selectedIndex
         
         valeurCouleur = listeDeroulante.options[choice].value
         renduCouleur.style.background = valeurCouleur
-       
-
     })
-
 }
+
 
 
 

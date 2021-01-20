@@ -1,0 +1,51 @@
+.titleBoxPanier{
+    text-align: center;
+    font-size: 1.5em;
+    border-bottom: solid 1px black;
+    padding: 10px 0;
+}
+
+#recup{
+    padding: 0 $gutter;
+}
+
+.boxItemPanier{
+
+    display: flex;
+    justify-content: space-evenly;
+
+
+    border: solid 1px black;
+    padding: 10px 0;
+    margin: 10px 0;
+
+   
+
+    .boxPrixItem{
+        height: 100%;
+    }
+
+   
+
+    .prix::after{
+        content: " €";
+    }
+    
+    .itemImg {
+        width: 100px;
+    }
+    .itemPrice{
+        font-size: 0.6em;
+    }
+    .prixTotalItem{
+        font-weight: bold;
+    }
+}
+
+ .boxPrixTotal{
+     font-size: 1.5em;
+     font-weight: bold;
+     display: flex;
+     justify-content: space-evenly;
+     padding: 10px $gutter;
+ }
