@@ -1,10 +1,17 @@
 
 let recup = document.getElementById("recup")
 let tabPrix = []
+let recupID = new Object();
+let id = 1
+let nbrItem = "1"
 
 for (let i = 0 ; i< localStorage.length; i++){
 
     let itemJS = JSON.parse(localStorage.getItem(localStorage.key(i)));
+
+    // VALEUR DE D'OBJET --  " recupID "  ---
+    //  id = itemJS._id
+    // recupID[id] = nbrItem
    
     // CREATION BOX ITEM-PANIER
 
@@ -59,6 +66,10 @@ for (let i = 0 ; i< localStorage.length; i++){
     boxPrixTotalItem.classList.add("prix")
     boxItem.appendChild(boxPrixTotalItem)  
 
+    //   INITALISATION DE TABLEAU ---   tabPrix   -----
+
+      tabPrix.push(0)
+
     // CREATION LISTE DEROULANTE
 
     let listeDeroulante = document.createElement("select")
@@ -89,12 +100,19 @@ for (let i = 0 ; i< localStorage.length; i++){
         let quantite = listeDeroulante.options[choice].value       
         let tabPrixResult = 0
         let prixTotalItem = itemJS.price * quantite
-        
-        if (tabPrix[i] >= 0){
-            tabPrix.splice(i,1,prixTotalItem)
-        }else {
-            tabPrix.push(prixTotalItem)
-        } 
+
+        // Recupération de l'ID et de la quantité pour POST 
+
+        id = itemJS._id
+        nbrItem = quantite
+        recupID[id] = nbrItem
+
+
+        // ajout du prix total des Items dans le tableau " tabPrix " 
+         
+        tabPrix.splice(i,1,prixTotalItem)  
+
+        //  Montant total
         
         for (let i = 0; i<tabPrix.length; i++){
             tabPrixResult += tabPrix[i]
@@ -103,15 +121,24 @@ for (let i = 0 ; i< localStorage.length; i++){
         // injection du prix total des Items
         
         boxPrixTotalItem.innerHTML = prixTotalItem    
-        boxPrixTotal.appendChild(prixTotalCol2)
 
         // injection du prix TOTAL
         
         prixTotalCol2.innerHTML = tabPrixResult + " €"
-    })
+    })  
+    let postArray = []
+let postquantite = 0
+
+for (let i in recupID){
     
+    console.log("salut")
+    postArray.push(i) 
     
+    for (let y in recupID){
+    }  
 }
+}
+
     
 // PRIX TOTAL AFFICHAGE
 
@@ -124,8 +151,22 @@ prixTotalCol1.innerHTML = "total"
 boxPrixTotal.appendChild(prixTotalCol1)
 
 let prixTotalCol2 = document.createElement ("div")
-prixTotalCol2.innerHTML = "€"
+prixTotalCol2.innerHTML = "0 €"
 boxPrixTotal.appendChild(prixTotalCol2)
+
+// TRAITEMENT  POUR " POST /"
+
+let postArray = []
+let postquantite = 0
+
+for (let i in recupID){
+    
+    console.log("salut")
+    postArray.push(i) 
+    
+    for (let y in recupID){
+    }  
+}
 
 
 
