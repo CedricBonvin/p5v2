@@ -1,0 +1,12 @@
+{
+  "name": "orinoco-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "sass": "sass --watch ./sass/main.scss:./style.css"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {}
+}

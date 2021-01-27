@@ -19,14 +19,13 @@
     padding: 10px 0;
     margin: 10px 0;
 
-   
+    h3{
+        font-size: 1em;
+    }
 
     .boxPrixItem{
         height: 100%;
     }
-
-   
-
     .prix::after{
         content: " €";
     }
