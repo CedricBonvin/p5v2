@@ -2,7 +2,7 @@ fetch("http://localhost:3000/api/teddies/"+recupID()).then(response => response.
     let boutton =  displayItem(result)             
     displayColorWrapper(result)
     displaySampleColor()
-    addBasket(boutton, result._id, result)        
+    addBasket(boutton, result)        
 })
 // -------------------------     F O N C T I O N S   --------------------------------------//
 
@@ -76,31 +76,53 @@ function displayColorWrapper(teddy){
     wrapperColor.appendChild(sampleColor)
 }
 // AJOUT AU PANIER
-function addBasket(list,clef,teddy){
-    
-    list.addEventListener("click",function(){
+function addBasket(list,teddy){
+    list.addEventListener("click",function(e){
+
+        let choice = dropDownList.selectedIndex
+         let colorValue= dropDownList.options[choice].value
+
+       let obj = {
+           nom: teddy.name,
+           price: teddy.price,
+           colorChoice: colorValue
+       };
+       
+       let recup = JSON.parse(localStorage.getItem("orinoco"))
+       if (recup){
+            recup.push (obj)
+            localStorage.setItem("orinoco",JSON.stringify(recup))
+       } else if (!recup){
+            let tab = []
+            tab.push(obj)
+            localStorage.setItem("orinoco",JSON.stringify(tab))
+       }
+        
+         e.preventDefault()
+
+        // teddy.quantity = 1
+        // localStorage.setItem(clef, JSON.stringify(teddy)) 
         // let dropDownList = document.getElementById("dropDownList")
         // let choice = dropDownList.selectedIndex
         // let colorValue= dropDownList.options[choice].value
-        teddy.quantity = 1
-        localStorage.setItem(clef, JSON.stringify(teddy))    
     })
+    
 }
 // AFFICHAGE DE L'ECHANTILLON DE COULEUR
 function displaySampleColor(){
 
     let sampleColor = document.getElementById("sampleColor")
-    let dropDownList = document.getElementById("dropDownList")
+    //let dropDownList = document.getElementById("dropDownList")
     sampleColor.style.background = dropDownList.options[0].value
-    let colorValue = dropDownList.options[0].value
+    //let colorValue = dropDownList.options[0].value
 
     dropDownList.addEventListener("change",function(){ 
         let choice = dropDownList.selectedIndex
-         colorValue= dropDownList.options[choice].value
+         let colorValue= dropDownList.options[choice].value
         sampleColor.style.background = colorValue
     })
 
-    return colorValue
+    //return colorValue
 }
 
 
