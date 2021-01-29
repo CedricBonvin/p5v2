@@ -1,40 +1,18 @@
-request = new XMLHttpRequest()
-
-request.onreadystatechange = function(){
-    if (request.readyState === 4){
-
-        let result = JSON.parse(request.responseText); 
-        let idTeddy = recupID()
-
-        for (let i in result){
-            if (idTeddy === result[i]._id){
-                let boutton =  displayItem(result[i])             
-                displayColorWrapper(result[i])
-                displaySampleColor()
-                addBasket(boutton, result[i]._id, result[i])   
-            }                     
-        }   
-    }
-}
-request.open("GET", "http://localhost:3000/api/teddies");
-request.send();
-
-
-
-
-
+fetch("http://localhost:3000/api/teddies/"+recupID()).then(response => response.json()).then(result =>{
+    let boutton =  displayItem(result)             
+    displayColorWrapper(result)
+    displaySampleColor()
+    addBasket(boutton, result._id, result)        
+})
 // -------------------------     F O N C T I O N S   --------------------------------------//
 
 // RECUPERATION DE L'ID
-
 function recupID(){
     const queryID = window.location.search;
     let idTeddy = new URLSearchParams(queryID).get("id");
     return idTeddy
 }
-
 // AFFICHAGE DE L'ITEM
-
 function displayItem(teddy){
 
     // création des éléments et injection des valeurs
@@ -71,9 +49,7 @@ function displayItem(teddy){
 
     return bouttonPanier
 }
-
 // AFFICHE WRAPPER CHOIX COULEUR
-
 function displayColorWrapper(teddy){
 
     let wrapperColor = document.getElementById ("wrapperColor")
@@ -99,9 +75,7 @@ function displayColorWrapper(teddy){
     sampleColor.classList.add("sampleColor")
     wrapperColor.appendChild(sampleColor)
 }
-
 // AJOUT AU PANIER
-
 function addBasket(list,clef,teddy){
     
     list.addEventListener("click",function(){
@@ -112,9 +86,7 @@ function addBasket(list,clef,teddy){
         localStorage.setItem(clef, JSON.stringify(teddy))    
     })
 }
-
 // AFFICHAGE DE L'ECHANTILLON DE COULEUR
-
 function displaySampleColor(){
 
     let sampleColor = document.getElementById("sampleColor")

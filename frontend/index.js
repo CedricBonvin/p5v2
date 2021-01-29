@@ -1,17 +1,9 @@
 
-let request = new XMLHttpRequest();
-
-request.onreadystatechange = function() {
-    if (request.readyState === 4) {
-        let result = JSON.parse(request.responseText);   
-        for (let i in result){            
+fetch("http://localhost:3000/api/teddies").then(response => response.json()).then(result =>{
+     for (let i in result){            
             displayProduct(result[i])
         }
-    }
-};
-request.open("GET", "http://localhost:3000/api/teddies");
-request.send(); 
-
+})
 
 // ----------------------------------------  F O N C T I O N    ---------------------------------------------------
 
