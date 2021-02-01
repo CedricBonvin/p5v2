@@ -16,55 +16,54 @@
 
     <header>
         <a href="index.html"><h1>Orinoco</h1></a>
+        <a href="panier.html" class="iconeBasket"><i class="fas fa-shopping-cart"></i></a>
     </header>
     <!-- <div id="recup"></div> -->
     <main>
-        <section class="section2">
-            <h2>Votre panier</h2>
-        </section>
-
         <section class="sectionIcone">
             <i class="fas fa-shopping-cart"></i>        
         </section>
-
+        
         <section class="wrapperItem">
-            <div class="titleBoxPanier">Panier</div>
+            <div class="titleBoxPanier">Votre panier</div>
+            <div id="vide">Votre panier est vide..!</div>
             <div id="recup"></div>
             <div id="boxPrixTotal" class="boxPrixTotal">
-                <div>total</div>
+                <div>TOTAL :</div>
                 <div id="prixTotal">0</div>
             </div>
         </section>
 
         <section class="wrapperForm">
-            <form action="#" class="formulaire">
+            <h2>Veuillez remplir le formulaire de contact</h2>
+            <form class="formulaire" id="form">
                 <div>
-                    <label for="name" class="formLabel"> Nom :
-                        <input type="text" name="name" placeholder="Gautier"  class="formInput">
+                    <label for="lastName" class="formLabel"> Nom :
+                        <input type="text" id="lastName" placeholder="Gautier"  class="formInput">
                     </label>
                 </div>
                 <div>
-                    <label for="prenom" class="formLabel"> Prénom :
-                        <input type="text" name="prenom" placeholder="Jean"  class="formInput">
+                    <label for="firstName" class="formLabel"> Prénom :
+                        <input type="text" id="firstName" placeholder="Jean"  class="formInput">
                     </label>
                 </div>
                 <div>
                     <label for="adresse" class="formLabel"> Adresse :
-                        <input type="text" name="adresse" placeholder="Rue du Loisir 45"  class="formInput">
+                        <input type="text" id="adresse" placeholder="Rue du Loisir 45"  class="formInput">
                     </label>
                 </div>
                 <div>
-                    <label for="ville" class="formLabel"> Ville :
-                        <input type="text" name="ville" placeholder="Paris"  class="formInput">
+                    <label for="city" class="formLabel"> Ville :
+                        <input type="text" id="city" placeholder="Paris"  class="formInput">
                     </label>
                 </div>
                 <div>
-                    <label for="email" class="formLabel"> Nom :
-                        <input type="email" name="email" placeholder="Mon_mail@hébergeur.com"  class="formInput">
+                    <label for="email" class="formLabel"> E-mail :
+                        <input type="email" id="email" placeholder="Mon_mail@hébergeur.com"  class="formInput">
                     </label>
                 </div>
-               <button  type="submit" class="btn">Commander <a href="confirmation.html"></a></button>
             </form>
+            <a  id="linkConfirmation"><button  type="button" class="btn" id="submit">Procéder au paiement </button></a>
         </section>
        
     </main>

@@ -1,8 +1,8 @@
 fetch("http://localhost:3000/api/teddies/"+recupID()).then(response => response.json()).then(result =>{
-    let boutton =  displayItem(result)             
+    displayItem(result)             
     displayColorWrapper(result)
     displaySampleColor()
-    addBasket(boutton, result)        
+    addBasket( result)        
 })
 // -------------------------     F O N C T I O N S   --------------------------------------//
 
@@ -45,9 +45,9 @@ function displayItem(teddy){
     bouttonPanier.innerHTML = `ajouter au panier ${teddy.price / 100}.00 €`;
     bouttonPanier.classList.add ("btn__panier");
     bouttonPanier.setAttribute("href","panier.html")
+    bouttonPanier.setAttribute("id","basketButton")
     el.appendChild(bouttonPanier);
 
-    return bouttonPanier
 }
 // AFFICHE WRAPPER CHOIX COULEUR
 function displayColorWrapper(teddy){
@@ -76,18 +76,22 @@ function displayColorWrapper(teddy){
     wrapperColor.appendChild(sampleColor)
 }
 // AJOUT AU PANIER
-function addBasket(list,teddy){
-    list.addEventListener("click",function(e){
+function addBasket(teddy){
+    let basketButton = document.getElementById("basketButton")
+    basketButton.addEventListener("click",function(e){
 
         let choice = dropDownList.selectedIndex
-         let colorValue= dropDownList.options[choice].value
+        let colorValue= dropDownList.options[choice].value
 
        let obj = {
            nom: teddy.name,
            price: teddy.price,
-           colorChoice: colorValue
+           colorChoice: colorValue,
+           quantity: 1,
+           id : teddy._id,
+           image :teddy.imageUrl
        };
-       
+       // localstorage
        let recup = JSON.parse(localStorage.getItem("orinoco"))
        if (recup){
             recup.push (obj)
@@ -97,16 +101,7 @@ function addBasket(list,teddy){
             tab.push(obj)
             localStorage.setItem("orinoco",JSON.stringify(tab))
        }
-        
-         e.preventDefault()
-
-        // teddy.quantity = 1
-        // localStorage.setItem(clef, JSON.stringify(teddy)) 
-        // let dropDownList = document.getElementById("dropDownList")
-        // let choice = dropDownList.selectedIndex
-        // let colorValue= dropDownList.options[choice].value
-    })
-    
+    })   
 }
 // AFFICHAGE DE L'ECHANTILLON DE COULEUR
 function displaySampleColor(){

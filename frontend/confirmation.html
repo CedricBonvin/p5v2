@@ -23,11 +23,25 @@
             <h2>Confirmation de commande</h2>
         </section>
 
-        <section class="sectionIcone">
-            <i class="fas fa-calendar-check"></i>
+     
+        <section class="validationConfirmation">
+            <p class="boxConfirm">Votre Commande est confirmée <br><i class="fas fa-calendar-check check"></i></p>
         </section>
 
-        <section id="wrapperItems"></section>
+        <section class="confirmation"> 
+            <h3>Détail :</h3>
+            <p>Commande No :<br> <span id="idCommande"></span></p>
+            <ul>
+                <li>Nom : <span class="valueConfirmation" id="nom"></span></li>
+                <li>Prénom : <span class="valueConfirmation" id="prénom"></span></li>
+                <li>Ville : <span class="valueConfirmation" id="ville"></span></li>
+                <li>Adresse : <span class="valueConfirmation" id="adresse"></span></li>
+                <li>E-mail : <span class="valueConfirmation" id="email"></span></li>
+                <li>Le prix total de votre commande est : <span class="valueConfirmation" id= prixTotal></span> </li>
+            </ul>
+            <a href="index.html"><button class="btn">Retour à l'Acceuil</button></a>
+        
+        </section>
     </main>
 
     <footer>
@@ -38,6 +52,8 @@
             <i class="fab fa-instagram"></i>
         </div>
     </footer>
+
+    <script type="text/javascript" src="confirmation.js"></script>
 
 </body>
 </html>

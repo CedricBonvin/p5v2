@@ -1,7 +1,21 @@
-#wrapperItems{
-    background-color:white;
-    padding: 0px $gutter 50px $gutter;
-}
+ #wrapperItems{
+     background-color:white;
+     padding: 0px $gutter;
+ }
 .wrapperItems{
-    padding: 0 $gutter;
+    padding: 50px $gutter; 
+}
+
+.wrapperItem{
+    
+    #vide{
+    text-align: center;
+    padding: 50px;
+    margin: 20px 0;
+    font-size: 1.3em;
+    background-color:lighten(red,40);
+    color: darken(red,10);
+    border: solid 1px red;
+}
+
 }

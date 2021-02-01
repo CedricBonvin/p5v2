@@ -1,0 +1,36 @@
+.confirmation{
+    background-color: white;
+    padding: $gutter;
+
+    h3{
+        padding: 30px 0 0 0;
+    }
+    li{
+        line-height: 1.8;
+    }
+    #idCommande{
+        font-size: 0.8em;
+        color: red;
+    }
+    .valueConfirmation{
+        font-weight: bold;
+    }
+    .btn{
+        margin: 50px auto;
+    }
+}
+
+.validationConfirmation{
+
+    .boxConfirm{
+        font-size: 1.5em;
+        color: darken($color-primary, $amount: 20);
+        padding: 20px 0;
+        border-radius: 10px;
+        background-color: lighten($color-primary,40);
+    }
+    .check{
+    font-size: 2em;
+    padding-top: 10px;
+}
+}

@@ -4,9 +4,6 @@ fetch("http://localhost:3000/api/teddies").then(response => response.json()).the
             displayProduct(result[i])
         }
 })
-
-// ----------------------------------------  F O N C T I O N    ---------------------------------------------------
-
 function displayProduct (teddy){
 
     let WrapperItems = document.getElementById("wrapperItems")

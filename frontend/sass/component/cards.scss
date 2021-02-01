@@ -1,12 +1,11 @@
 
-
 .card{
     padding: 10px;
     padding-bottom: 0;
-    margin-top: 50px;
+    margin-bottom: 50px;
     border-radius: 20px;
     box-shadow: 0 0 9px 10px lightgray;
-
+    
     h3{
         padding: $gutter 0 0 $gutter;
         position: relative;
@@ -19,46 +18,49 @@
         width: 50px;
         border-bottom: 2px solid $color-primary;
     }
-
+    
     img{
         margin: 30px 0 20px 0;
         width: 100%;
-    
+        box-shadow: 0 0 20px 0px rgb(231, 231, 231);
+        
     }
     i{
         display: block;
         text-align: right;
         padding: 10px 10px 20px 0;
         font-size: 1.3em;
+        border-top: solid 1px black;
+        font-weight: bold;
     }
     i::after{
         content: " €";
     }
     .check::after{
-
+        
         content: "\f00c";
         font-family: "Font Awesome 5 Free";
-
+        
         display: inline-block;
         color: $color-primary;
         text-align: center;
         font-weight: 900;
         font-size: 2em;
-
+        
         width: calc(100% + 20px);
         margin-left: -10px;
         padding: 20px 0;
-
+        
         background: rgb(82, 82, 82);
         border-radius: 0 0 20px 20px;
-
-        transition: 1s;
     } 
 }
 
+
+
 .cardCustom{
-    margin: 40px 0;
-    padding: 0px $gutter;
+    margin: 0px 0;
+    padding: 20px $gutter;
     border-radius: 20px;
     background: #ffffff;
     img{
