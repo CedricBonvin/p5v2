@@ -1,15 +1,15 @@
-let tabPrix = []
 let x = -1
-let ted = JSON.parse(localStorage.getItem("orinoco"))
 
+let ted = JSON.parse(localStorage.getItem("orinoco"))
 for (let i in ted){
     panierVide(ted)
     displayStorage(ted[i])
-    supprimer(x,ted,i )
     displayBasicPrice(ted[i],x) 
     displayNewPrice(ted, i,x) 
-    order(ted)
+    supprimer(x,ted,i)
+    order(ted) 
 }
+
 // -------------------------    F U N C T I O N  ---------------------//
 
 // AFFICHAGE BOX PANIER VIDE SI PANIER VIDE
@@ -22,6 +22,8 @@ function panierVide(teddy){
 
 // AFFICHAGE DES ITEMS
 function displayStorage (teddy) {
+
+    
 
     x++
     
@@ -106,47 +108,42 @@ function displayStorage (teddy) {
 function displayBasicPrice (teddy,x){
 
     let boxPrixTotalItem = document.getElementById(`boxPrix${x}`)
-    let boxprixTotal = document.getElementById("prixTotal")
+    let recupPrixTotalItem  = document.querySelectorAll(".prixTotalItem")
+    let prixTotal = document.getElementById("prixTotal")
+    let total = 0
         
-    tabPrix.push(parseInt(teddy.quantity * teddy.price))
+    boxPrixTotalItem.innerHTML =  (teddy.quantity * teddy.price / 100).toFixed(2)
 
-    // affichage prix
+    //addition des prix total des items 
 
-    boxPrixTotalItem.innerHTML = teddy.quantity * teddy.price / 100 + ".00 "
-    recupPrixTotal = 0
-    for (let i of tabPrix){
-        recupPrixTotal += i
+    for (let i of recupPrixTotalItem){
+        total += parseInt (i.innerHTML)
     }
-    boxprixTotal.innerHTML = recupPrixTotal / 100 + ".00 €"
+    prixTotal.innerHTML = (total.toFixed(2) + " €")
 }
 
-// AFFICHAGE DES PRIX APRES AVOIR CHOISI LA QUATITE
+// AFFICHAGE DES PRIX APRES AVOIR CHOISI LA QUANTITE
 function displayNewPrice(teddy,index,x){
     
     let select = document.getElementById(`select${x}`)
     select.addEventListener("change",function(){
+        let recupPrixTotalItem  = document.querySelectorAll(".prixTotalItem")
         let boxPrix = document.getElementById(`boxPrix${x}`)
         let boxprixTotal = document.getElementById("prixTotal")
         let prixTotal = 0
         let quantite = select.options[select.selectedIndex].value
         
-        // changement de quantité dans le localstorage
-        
+        // changement de quantité dans le localstorage   
         console.log(x)
-        teddy[x -1].quantity = quantite
+        teddy[x].quantity = quantite
         localStorage.setItem("orinoco",JSON.stringify (teddy))
         
+        boxPrix.innerHTML = (quantite * teddy[index].price /100).toFixed(2)
 
-        boxPrix.innerHTML = (quantite * teddy[index].price) / 100 + ".00"
-        
-        tabPrix.splice( x ,1, teddy[index].price * quantite)
-        
-        for (let i of tabPrix){
-            prixTotal += i
+        for (let i of recupPrixTotalItem){
+            prixTotal += parseInt (i.innerHTML)
         }
-
-        boxprixTotal.innerHTML = prixTotal / 100 + ".00 €" 
-        prixTotal = 0
+        boxprixTotal.innerHTML = (prixTotal.toFixed(2) + " €")    
     })
 }
 
@@ -201,26 +198,28 @@ function order(basket){
     })
 }
 
+// BOUTTON SUPPRIMER
 function supprimer(x,teddy,i){
-    let product = document.getElementById(`supp${x}`)
 
+    let product = document.getElementById(`supp${x}`)
     product.addEventListener("click",function(){
         let boxprixTotal = document.getElementById("prixTotal")
-        let prixTotal = 0
-
         let article = document.getElementById(`article${x}`)
-        teddy.splice(x,1)
+        let prixTotal = 0
+        
+        teddy.splice(i,1)
+        //delete teddy[i]
         localStorage.setItem("orinoco",JSON.stringify(teddy))
         article.remove()
-        tabPrix.splice(x,1)
-
-        for (let i of tabPrix){
-            prixTotal += i
-        }
-        boxprixTotal.innerHTML=prixTotal / 100 +".00 €"  
-       
-    })
+        
+        let recupPrixTotalItem  = document.querySelectorAll(".prixTotalItem")
+        for (let i of recupPrixTotalItem){
+            prixTotal += parseInt(i.innerHTML)
+        }    
+        boxprixTotal.innerHTML = (prixTotal.toFixed(2) + " €" )        
+    })   
 }
+
 
    
 
