@@ -53,10 +53,6 @@ table {
   box-sizing: border-box;
 }
 
-main {
-  background-color: #f2f2f2;
-}
-
 body {
   font-family: roboto, sans-serif;
   font-size: 16px;
@@ -156,10 +152,10 @@ footer i {
 
 .validationConfirmation .boxConfirm {
   font-size: 1.5em;
-  color: #115627;
+  color: #249749;
   padding: 20px 0;
   border-radius: 10px;
-  background-color: #abeec0;
+  background-color: #f1fcf5;
 }
 .validationConfirmation .check {
   font-size: 2em;
@@ -167,11 +163,18 @@ footer i {
 }
 
 .card {
+  max-width: 370px;
   padding: 10px;
   padding-bottom: 0;
   margin-bottom: 50px;
   border-radius: 20px;
   box-shadow: 0 0 9px 10px lightgray;
+  background-color: white;
+}
+@media (min-width: 600px) {
+  .card {
+    margin: 40px 20px;
+  }
 }
 .card h3 {
   padding: 15px 0 0 15px;
@@ -183,12 +186,15 @@ footer i {
   bottom: -10px;
   left: 15px;
   width: 50px;
-  border-bottom: 2px solid #22ab4d;
+  border-bottom: 2px solid #4dd478;
 }
 .card img {
   margin: 30px 0 20px 0;
   width: 100%;
   box-shadow: 0 0 20px 0px #e7e7e7;
+  height: 230px;
+  object-fit: cover;
+  object-position: center center;
 }
 .card i {
   display: block;
@@ -205,7 +211,7 @@ footer i {
   content: "";
   font-family: "Font Awesome 5 Free";
   display: inline-block;
-  color: #22ab4d;
+  color: #4dd478;
   text-align: center;
   font-weight: 900;
   font-size: 2em;
@@ -219,6 +225,8 @@ footer i {
 .cardCustom {
   margin: 0px 0;
   padding: 20px 15px;
+  max-width: 370px;
+  margin: auto;
   border-radius: 20px;
   background: #ffffff;
 }
@@ -253,30 +261,39 @@ footer i {
 .section2 {
   background-color: white;
   padding: 30px 0 20px 0;
+  text-align: center;
 }
 .section2 h2 {
   font-size: 2.2em;
   line-height: 1.6;
-  padding-left: 15px;
 }
 
 .sectionIcone {
   width: 100%;
   text-align: center;
-  font-size: 4em;
+  font-size: 5em;
   padding: 30px 0;
-  color: #1a803a;
+  color: rgba(145, 63, 153, 0.678);
+  background-color: #f2f2f2;
 }
 
 #wrapperItems {
-  background-color: white;
-  padding: 0px 15px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-flow: row wrap;
+  align-items: stretch;
+  padding: 40px 15px;
+  background-color: #f2f2f2;
 }
 
 .wrapperItems {
-  padding: 50px 15px;
+  background-color: #f2f2f2;
+  padding: 40px 0;
 }
 
+.wrapperItem {
+  padding: 50px 15px;
+}
 .wrapperItem #vide {
   text-align: center;
   padding: 50px;
@@ -303,7 +320,7 @@ footer i {
   font-size: 1.1em;
   padding: 10px 15px;
   border-radius: 50px;
-  background-color: #22ab4d;
+  background-color: #4dd478;
 }
 .btn__panier {
   display: block;
@@ -378,15 +395,18 @@ footer i {
 
 .boxItemPanier {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  flex-flow: wrap;
   background-color: #fff;
   border-bottom: solid 1px lightgray;
-  padding: 20px 0;
+  padding: 10px 0 20px 0;
 }
-.boxItemPanier h3 {
-  font-size: 1em;
-  width: 25%;
-  padding-left: 15px;
+.boxItemPanier .title {
+  width: 100%;
+  padding: 5px 0 15px 15px;
+  font-size: 0.8em;
+  font-style: italic;
+  text-decoration: underline;
 }
 .boxItemPanier .boxPrixItem {
   height: 100%;
@@ -395,6 +415,8 @@ footer i {
   content: " €";
 }
 .boxItemPanier .itemImg {
+  box-shadow: 0 0 10px 0 lightgray;
+  margin-left: 15px;
   width: 25%;
 }
 .boxItemPanier .itemPrice {
@@ -402,25 +424,63 @@ footer i {
 }
 .boxItemPanier .prixTotalItem {
   font-weight: bold;
-  width: 30%;
   text-align: right;
   padding-right: 15px;
 }
 .boxItemPanier .boxQuantite {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .boxItemPanier select {
   margin-left: 10px;
 }
 
 .boxPrixTotal {
-  font-size: 1.5em;
+  font-size: 1.2em;
   font-weight: bold;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   padding: 10px 15px;
   background-color: #fff;
   margin: 0 15px;
+}
+.boxPrixTotal div:nth-child(1) {
+  width: 70%;
+  text-align: right;
+}
+
+.fonctionnement {
+  background-color: #fff;
+  position: relative;
+  padding: 20px 0;
+}
+.fonctionnement h2 {
+  font-size: 1.6em;
+  padding: 20px 0 20px 15px;
+  letter-spacing: 2px;
+}
+.fonctionnement ul {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  padding: 20px 0;
+}
+.fonctionnement .itemExplication {
+  font-size: 1.2em;
+  padding: 15px;
+  border-radius: 25px;
+  box-shadow: 0 0 10px 0px #b4b4b4;
+  margin: 10px;
+}
+
+hr {
+  display: block;
+  color: red;
+  width: 50%;
+  margin: 0px auto 60px auto;
+  background-color: red;
 }
 
 /*# sourceMappingURL=style.css.map */

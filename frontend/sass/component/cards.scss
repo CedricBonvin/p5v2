@@ -1,10 +1,16 @@
 
+
 .card{
+    max-width: 370px;;
     padding: 10px;
     padding-bottom: 0;
     margin-bottom: 50px;
     border-radius: 20px;
     box-shadow: 0 0 9px 10px lightgray;
+    background-color: white;
+    @include tablette {
+        margin:40px 20px
+    }
     
     h3{
         padding: $gutter 0 0 $gutter;
@@ -23,6 +29,9 @@
         margin: 30px 0 20px 0;
         width: 100%;
         box-shadow: 0 0 20px 0px rgb(231, 231, 231);
+        height: 230px;
+        object-fit: cover;
+        object-position: center center;
         
     }
     i{
@@ -61,8 +70,11 @@
 .cardCustom{
     margin: 0px 0;
     padding: 20px $gutter;
+    max-width: 370px;
+    margin: auto;
     border-radius: 20px;
     background: #ffffff;
+
     img{
         width: 100%;
     }

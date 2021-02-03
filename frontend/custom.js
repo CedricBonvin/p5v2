@@ -82,7 +82,7 @@ function addBasket(teddy){
 
         let choice = dropDownList.selectedIndex
         let colorValue= dropDownList.options[choice].value
-
+        // création de l'objet
        let obj = {
            nom: teddy.name,
            price: teddy.price,

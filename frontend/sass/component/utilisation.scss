@@ -1,0 +1,36 @@
+.fonctionnement{
+    background-color: #fff;
+    position: relative;
+    padding: 20px 0;
+
+    h2{
+        font-size: 1.6em;
+        padding: 20px 0 20px $gutter;
+        letter-spacing: 2px;
+    }
+
+    ul{
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        padding: 20px 0;
+    }
+    .itemExplication{
+        font-size: 1.2em;
+        padding: 15px ;
+        border-radius: 25px;
+        box-shadow: 0 0 10px 0px rgb(180, 180, 180);
+        margin: 10px;
+    }
+   
+  
+
+}
+hr{
+    display: block;
+    color: red;
+    width: 50%;
+    margin: 0px auto 60px auto;
+    background-color: red;
+}
+  

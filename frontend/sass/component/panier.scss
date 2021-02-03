@@ -12,17 +12,18 @@
 .boxItemPanier{
 
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    flex-flow: wrap;
     background-color: #fff;
-
-
     border-bottom: solid 1px lightgray;
-    padding: 20px 0;
+    padding: 10px 0 20px 0;
 
-    h3{
-        font-size: 1em;
-        width: 25%;
-        padding-left: 15px;
+    .title{
+        width: 100%;
+        padding: 5px 0 15px 15px;
+        font-size: 0.8em;
+        font-style: italic;
+        text-decoration: underline;
     }
 
     .boxPrixItem{
@@ -33,7 +34,8 @@
     }
     
     .itemImg {
-
+        box-shadow: 0 0 10px 0 lightgray;
+        margin-left: 15px;
         width: 25%;
     }
     .itemPrice{
@@ -41,12 +43,15 @@
     }
     .prixTotalItem{
         font-weight: bold;
-        width: 30%;
+       
         text-align: right;  
         padding-right: $gutter;     
     }
    .boxQuantite{
        text-align: center;
+       display: flex;
+       flex-direction: column;
+       justify-content: space-between;
    }
    select{
        margin-left: 10px;
@@ -54,11 +59,16 @@
 }
 
  .boxPrixTotal{
-     font-size: 1.5em;
+     font-size: 1.2em;
      font-weight: bold;
      display: flex;
-     justify-content: space-evenly;
+     justify-content: space-between;
      padding: 10px $gutter;
      background-color: #fff;
      margin: 0 $gutter;
+
+     div:nth-child(1){
+         width: 70%;
+         text-align: right;
+     }
  }

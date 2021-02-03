@@ -1,12 +1,19 @@
  #wrapperItems{
-     background-color:white;
-     padding: 0px $gutter;
+     display: flex;
+     justify-content: space-evenly;
+     flex-flow: row wrap;
+     align-items: stretch;
+     padding: 40px $gutter;
+     background-color: #f2f2f2;
  }
 .wrapperItems{
-    padding: 50px $gutter; 
+
+    background-color: #f2f2f2;
+    padding: 40px 0;
 }
 
 .wrapperItem{
+    padding: 50px $gutter; 
     
     #vide{
     text-align: center;

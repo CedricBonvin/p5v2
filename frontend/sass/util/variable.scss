@@ -1,4 +1,14 @@
 $gutter : 15px;
 
-$color-primary : #22ab4d;
+$color-primary : #4dd478;
 $color-secondary : #ab2222;
+$color-tertiary :  rgba(145, 63, 153, 0.678);
+
+// MIXIN
+
+$tablette : 600px;
+@mixin tablette {
+    @media (min-width : $tablette){
+           @content;      
+    }
+}
