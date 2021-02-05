@@ -1,5 +1,6 @@
 
 header{
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -21,5 +22,18 @@ header{
         margin-left: $gutter;
         font-style: italic;
       
-    }     
+    } 
+    .nbrArticleIcone{
+        position: absolute;
+        display: none;
+        top : 15px;
+        right: 50px;
+        width: 25px;
+        height: 25px;
+        text-align: center;
+        line-height: 25px;
+        background-color: $color-primary;
+        border-radius: 50%;
+    }
+
 }

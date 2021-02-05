@@ -1,8 +1,9 @@
 
 fetch("http://localhost:3000/api/teddies").then(response => response.json()).then(result =>{
-     for (let i in result){            
-            displayProduct(result[i])
-        }
+    for (let i in result){            
+        displayProduct(result[i])
+        nbrArticleHeader()
+    }
 })
 function displayProduct (teddy){
 
@@ -45,6 +46,8 @@ function displayProduct (teddy){
 
     return article             
 }
+
+
 
 
 

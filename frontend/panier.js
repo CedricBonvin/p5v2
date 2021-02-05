@@ -1,4 +1,6 @@
+// variable indexé sur chaque article affiché, ( pour récupération cibler par ID )
 let x = -1
+
 let ted = JSON.parse(localStorage.getItem("orinoco"))
 for (let i in ted){
     if (ted[i]){
@@ -7,22 +9,12 @@ for (let i in ted){
         displayNewPrice(ted, i,x) 
         supprimer(x,ted,i)
         order(ted,i) 
-        panierVide(ted,i)
-    }   
+    }      
 }
+nbrArticleHeader()
+emptyBasket()
 
-// -------------------------    F U N C T I O N  ---------------------//
-
-// AFFICHAGE BOX PANIER VIDE SI PANIER VIDE
-function panierVide(teddy,i){
-    let basket = document.getElementById("vide")
-    
-    if (teddy.length > 0 ){
-        basket.style.display = "none"   
-    }  
-
-  
-}
+// -----------------   F U N C T I O N S  ---------------------//
 
 // AFFICHAGE DES ITEMS
 function displayStorage (teddy) {
@@ -38,7 +30,7 @@ function displayStorage (teddy) {
 
     // titre nom + prix de base
     let title = document.createElement("div")
-    title.innerHTML = (`${teddy.nom} : ${((teddy.price / 100).toFixed(2))} €`)
+    title.innerHTML = (`${teddy.nom} : ${splitPrice(teddy.price)}`)
     title.classList.add("title")
     boxItem.appendChild(title)
 
@@ -98,14 +90,15 @@ function displayBasicPrice (teddy,x){
     let prixTotal = document.getElementById("prixTotal")
     let total = 0
         
-    boxPrixTotalItem.innerHTML =  (teddy.quantity * teddy.price / 100).toFixed(2)
+    boxPrixTotalItem.innerHTML =  splitPrice(teddy.quantity * teddy.price)
 
     //addition des prix total des items 
 
     for (let i of recupPrixTotalItem){
         total += parseInt (i.innerHTML)
     }
-    prixTotal.innerHTML = (total.toFixed(2) + " €")
+   
+    prixTotal.innerHTML = splitPrice(total * 100)
 }
 
 // AFFICHAGE DES PRIX APRES AVOIR CHOISI LA QUANTITE
@@ -120,16 +113,16 @@ function displayNewPrice(teddy,index,x){
         let quantite = select.options[select.selectedIndex].value
         
         // changement de quantité dans le localstorage   
-        console.log("la valeur de i est " + index)
         teddy[index].quantity = quantite
         localStorage.setItem("orinoco",JSON.stringify (teddy))
         
-        boxPrix.innerHTML = (quantite * teddy[index].price /100).toFixed(2)
+        boxPrix.innerHTML =  splitPrice(quantite * teddy[index].price)
         
         for (let i of recupPrixTotalItem){
             prixTotal += parseInt (i.innerHTML)
         }
-        boxprixTotal.innerHTML = (prixTotal.toFixed(2) + " €")    
+        boxprixTotal.innerHTML = splitPrice(prixTotal*100)  
+        nbrArticleHeader()
     })
 }
 
@@ -142,7 +135,6 @@ function supprimer(x,teddy,i){
         let article = document.getElementById(`article${x}`)
         let prixTotal = 0
         
-        //teddy.splice(i,1)
         delete teddy[i]
         localStorage.setItem("orinoco",JSON.stringify(teddy))
         article.remove()
@@ -151,9 +143,35 @@ function supprimer(x,teddy,i){
         for (let i of recupPrixTotalItem){
             prixTotal += parseInt(i.innerHTML)
         }    
-        boxprixTotal.innerHTML = (prixTotal.toFixed(2) + " €" )  
-        
+        boxprixTotal.innerHTML = splitPrice(prixTotal * 100)  
+        emptyBasket()   
+        nbrArticleHeader()   
     })  
+}
+
+// SI PANIER EST VIDE AFFICHAGE DE LA BOX PANIER VIDE SUR LA PAGE PANIER
+function emptyBasket(){
+    
+    let storage = JSON.parse (localStorage.getItem("orinoco"))
+    let display = true
+    // test : Si une valeur existe dans le localstorage => " orinoco "
+    if (storage){
+        for (let i in storage){
+            if (storage[i]){
+                display = false
+                break
+            }
+        }
+    }
+    // injection de la box panier vide
+    if (display){
+        let titleBoxPanier = document.getElementById("titleBoxPanier")
+        let boxEmptyBasket = document.createElement ("div")
+        
+        boxEmptyBasket.innerHTML="Votre panier est vide"
+        boxEmptyBasket.classList.add("emptyBasket")
+        titleBoxPanier.appendChild(boxEmptyBasket)      
+    }
 }
 
 // ENVOIE DES DONNEES AU SERVEUR
@@ -162,8 +180,6 @@ function order(basket,i){
 
     buttonSubmit.addEventListener("click",function(e){
         e.stopImmediatePropagation()
-        //e.preventDefault()
-        
         let lastNameInput = document.getElementById("lastName").value
         let firstNameInput = document.getElementById("firstName").value
         let cityInput = document.getElementById("city").value
@@ -171,7 +187,7 @@ function order(basket,i){
         let emailInput = document.getElementById("email").value
         let prixTotal = document.getElementById("prixTotal").innerHTML
         let tabProduct = []
-
+        
         // tableau des iD pour POST
 
         for (let i in basket){
@@ -195,7 +211,8 @@ function order(basket,i){
         let orderParse = JSON.stringify(order.contact)
 
         // envoie des données au serveur
-        function post(){
+              
+        if (firstNameInput){
             fetch('http://localhost:3000/api/teddies/order', {
             method: "POST",
             body: JSON.stringify(order),
@@ -204,10 +221,7 @@ function order(basket,i){
             .then(response => response.json()) 
             .then(serveur =>{               
                 document.location.href=`confirmation.html?id=${serveur.orderId}&total=${prixTotal}&contact=${orderParse}`;
-            });    
-        } 
-        if (firstNameInput){
-            post()      
+            });              
         } else {
             e.preventDefault
             alert("Veuillez remplire tous les champs du formulaire..")
@@ -217,7 +231,8 @@ function order(basket,i){
 
 
 
-   
+
+
 
 
 

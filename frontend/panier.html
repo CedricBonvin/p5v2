@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,20 +17,19 @@
     <header>
         <a href="index.html"><h1>Orinoco</h1></a>
         <a href="panier.html" class="iconeBasket"><i class="fas fa-shopping-cart"></i></a>
+        <div class="nbrArticleIcone"></div>
     </header>
-    <!-- <div id="recup"></div> -->
     <main>
         <section class="sectionIcone">
             <i class="fas fa-shopping-cart"></i>        
         </section>
         
         <section class="wrapperItem">
-            <div class="titleBoxPanier">Votre panier</div>
-            <div id="vide">Votre panier est vide..!</div>
+            <h2 id="titleBoxPanier" class="titleBoxPanier">Votre panier</h2>
             <div id="recup"></div>
             <div id="boxPrixTotal" class="boxPrixTotal">
                 <div>TOTAL :</div>
-                <div id="prixTotal">0</div>
+                <div id="prixTotal"></div>
             </div>
         </section>
 
@@ -64,8 +63,7 @@
                 </div>
             </form>
             <div  id="linkConfirmation"><button  type="button" class="btn" id="submit">Procéder au paiement </button></div>
-        </section>
-       
+        </section>    
     </main>
 
     <footer>
@@ -77,6 +75,7 @@
         </div>
     </footer>
 
+    <script type="text/javascript" src="fonctions.js"></script>
     <script type="text/javascript" src="panier.js"></script>
 </body>
 </html>

@@ -2,7 +2,8 @@ fetch("http://localhost:3000/api/teddies/"+recupID()).then(response => response.
     displayItem(result)             
     displayColorWrapper(result)
     displaySampleColor()
-    addBasket( result)        
+    addBasket( result) 
+    nbrArticleHeader()       
 })
 // -------------------------     F O N C T I O N S   --------------------------------------//
 
@@ -78,12 +79,12 @@ function displayColorWrapper(teddy){
 // AJOUT AU PANIER
 function addBasket(teddy){
     let basketButton = document.getElementById("basketButton")
-    basketButton.addEventListener("click",function(e){
+    basketButton.addEventListener("click",function(){
 
         let choice = dropDownList.selectedIndex
-        let colorValue= dropDownList.options[choice].value
+        let colorValue= dropDownList.options[choice].value     // !!!!!!!! pourquoi j'arrive à le récupérer !!!!!
         // création de l'objet
-       let obj = {
+       let article = {
            nom: teddy.name,
            price: teddy.price,
            colorChoice: colorValue,
@@ -91,15 +92,15 @@ function addBasket(teddy){
            id : teddy._id,
            image :teddy.imageUrl
        };
-       // localstorage
-       let recup = JSON.parse(localStorage.getItem("orinoco"))
-       if (recup){
-            recup.push (obj)
-            localStorage.setItem("orinoco",JSON.stringify(recup))
-       } else if (!recup){
-            let tab = []
-            tab.push(obj)
-            localStorage.setItem("orinoco",JSON.stringify(tab))
+       // création du tableau dans le localstorage
+       let articleArray = JSON.parse(localStorage.getItem("orinoco"))
+       if (articleArray){
+        articleArray.push (article)
+            localStorage.setItem("orinoco",JSON.stringify(articleArray))
+       } else if (!articleArray){
+        articleArray = []
+        articleArray.push(article)
+            localStorage.setItem("orinoco",JSON.stringify(articleArray))
        }
     })   
 }
@@ -107,7 +108,7 @@ function addBasket(teddy){
 function displaySampleColor(){
 
     let sampleColor = document.getElementById("sampleColor")
-    //let dropDownList = document.getElementById("dropDownList")
+    //let dropDownList = document.getElementById("dropDownList")      !!!!!!!! Pourquoi j'arrive à le récupérer
     sampleColor.style.background = dropDownList.options[0].value
     //let colorValue = dropDownList.options[0].value
 
@@ -116,9 +117,9 @@ function displaySampleColor(){
          let colorValue= dropDownList.options[choice].value
         sampleColor.style.background = colorValue
     })
-
-    //return colorValue
 }
+
+
 
 
 

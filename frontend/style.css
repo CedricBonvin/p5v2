@@ -92,6 +92,7 @@ button {
 }
 
 header {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -110,6 +111,18 @@ header h1 {
   padding: 30px 0;
   margin-left: 15px;
   font-style: italic;
+}
+header .nbrArticleIcone {
+  position: absolute;
+  display: none;
+  top: 15px;
+  right: 50px;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  line-height: 25px;
+  background-color: #4dd478;
+  border-radius: 50%;
 }
 
 footer {
@@ -294,15 +307,6 @@ footer i {
 .wrapperItem {
   padding: 50px 15px;
 }
-.wrapperItem #vide {
-  text-align: center;
-  padding: 50px;
-  margin: 20px 0;
-  font-size: 1.3em;
-  background-color: #ffcccc;
-  color: #cc0000;
-  border: solid 1px red;
-}
 
 .btn {
   display: block;
@@ -333,7 +337,6 @@ footer i {
   margin: 20px 0 0 0;
 }
 .btn__supprimer {
-  margin-top: 10px;
   background-color: #dd5656;
   padding: 5px 10px;
   color: white;
@@ -389,6 +392,17 @@ footer i {
   padding-bottom: 20px;
 }
 
+.emptyBasket {
+  text-align: center;
+  padding: 50px;
+  margin: 20px 0;
+  font-size: 1em;
+  font-weight: 400;
+  background-color: #ffcccc;
+  color: #cc0000;
+  border: solid 1px red;
+}
+
 #recup {
   padding: 0 15px;
 }
@@ -403,7 +417,7 @@ footer i {
 }
 .boxItemPanier .title {
   width: 100%;
-  padding: 5px 0 15px 15px;
+  padding: 5px 0 15px 0px;
   font-size: 0.8em;
   font-style: italic;
   text-decoration: underline;
@@ -411,13 +425,12 @@ footer i {
 .boxItemPanier .boxPrixItem {
   height: 100%;
 }
-.boxItemPanier .prix::after {
-  content: " €";
-}
 .boxItemPanier .itemImg {
   box-shadow: 0 0 10px 0 lightgray;
-  margin-left: 15px;
   width: 25%;
+  min-height: 70px;
+  height: auto;
+  object-fit: cover;
 }
 .boxItemPanier .itemPrice {
   font-size: 0.6em;
@@ -425,7 +438,6 @@ footer i {
 .boxItemPanier .prixTotalItem {
   font-weight: bold;
   text-align: right;
-  padding-right: 15px;
 }
 .boxItemPanier .boxQuantite {
   text-align: center;
