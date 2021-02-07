@@ -4,8 +4,8 @@
 const queryID = window.location.search;
 let idOrder = new URLSearchParams(queryID).get("id");
 let prixTotal = new URLSearchParams(queryID).get("total");
-let contactSting = new URLSearchParams(queryID).get("contact")
-let contact = JSON.parse(contactSting)
+let contactString = new URLSearchParams(queryID).get("contact")
+let contact = JSON.parse(contactString)
 
 // récupération des éléments html
 
@@ -27,5 +27,4 @@ ville.innerHTML = contact.city
 adresse.innerHTML = contact.address
 email.innerHTML = contact.email
 
-  
-
+localStorage.clear()

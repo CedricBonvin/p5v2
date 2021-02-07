@@ -115,7 +115,7 @@ function displayNewPrice(teddy,index,x){
         // changement de quantité dans le localstorage   
         teddy[index].quantity = quantite
         localStorage.setItem("orinoco",JSON.stringify (teddy))
-        
+        // affichge du prix total
         boxPrix.innerHTML =  splitPrice(quantite * teddy[index].price)
         
         for (let i of recupPrixTotalItem){
@@ -153,16 +153,29 @@ function supprimer(x,teddy,i){
 function emptyBasket(){
     
     let storage = JSON.parse (localStorage.getItem("orinoco"))
+    let buttonSubmit = document.getElementById("submit")
+    let articleStorage = 0
     let display = true
+
     // test : Si une valeur existe dans le localstorage => " orinoco "
     if (storage){
         for (let i in storage){
             if (storage[i]){
                 display = false
+                articleStorage ++
                 break
             }
         }
     }
+    //alert panier vide 
+    buttonSubmit.addEventListener("click",function(e){
+        e.stopImmediatePropagation
+        if (articleStorage === 0){
+            alert("Veuillez choisir un article")
+            e.preventDefault
+        }
+    })
+
     // injection de la box panier vide
     if (display){
         let titleBoxPanier = document.getElementById("titleBoxPanier")
@@ -189,7 +202,6 @@ function order(basket,i){
         let tabProduct = []
         
         // tableau des iD pour POST
-
         for (let i in basket){
             if (basket[i]){
                 tabProduct.push(basket[i].id)
@@ -197,7 +209,6 @@ function order(basket,i){
         }
 
         //préparation de l'objet order pour POST
-
         let order = {
             contact: {
                 firstName: firstNameInput,
@@ -210,9 +221,8 @@ function order(basket,i){
         }
         let orderParse = JSON.stringify(order.contact)
 
-        // envoie des données au serveur
-              
-        if (firstNameInput){
+        // envoie des données au serveur... si test valider
+        if (testValide()){
             fetch('http://localhost:3000/api/teddies/order', {
             method: "POST",
             body: JSON.stringify(order),
@@ -224,11 +234,117 @@ function order(basket,i){
             });              
         } else {
             e.preventDefault
-            alert("Veuillez remplire tous les champs du formulaire..")
         }
     })
 }
 
+// TEST DU FORMULAIRE ET DU TABLEAU DES PRODUITS 
+function testValide (){
+    let lastNameInput = document.getElementById("lastName").value
+    let firstNameInput = document.getElementById("firstName").value
+    let cityInput = document.getElementById("city").value
+    let adressInput = document.getElementById("adresse").value
+    let emailInput = document.getElementById("email").value
+    let firstName = "Prénom"; let lastName = "Nom"; let adresse = "Adresse"; let city = "Ville"; let email = "E-mail"
+    let isValid = true;
+
+    if (
+        firstNameFalse(firstNameInput,firstName) ||
+        lasteNameFalse(lastNameInput,lastName) ||
+        cityFalse(cityInput,city) ||
+        adresseFalse(adressInput,adresse) ||
+        emailFalse(emailInput,email) ||
+        basketFalse()
+        ){ 
+        isValid = false; 
+    }
+    return isValid   
+
+    /////////////////////////////////////////////////////////////////
+    ////// DECLARATION DE FONCTION POUR LES TESTS DU FORMULAIRE  //// 
+    /////////////////////////////////////////////////////////////////
+
+    // test si le champ est vide
+    function isEmpty(inputValue,champ){
+        if (!inputValue){
+            alert(`Veuillez renseigner le champ ${champ}`)
+            return true          
+        }
+    }
+    // test du prénom
+    function firstNameFalse (inputValue,champ){
+        let regexString =/^[a-zA-Zé-]+$/
+
+        if (isEmpty(inputValue,champ)){
+            return true
+        }
+       if (inputValue.length > 20){
+           alert(`Le champ " Prénom " peut contenir 20 caractères au maximum`)
+           return true
+       }
+       if (!inputValue.match(regexString)){
+           alert(`Dans le champ " Prénom  " Veuillez utiliser seulement des caractères alphabétique`)
+           return true
+       }
+    }
+    //test du nom
+    function lasteNameFalse (inputValue,champ){
+        if (isEmpty(inputValue,champ)){
+            return true
+        }
+        if (inputValue.length > 20){
+            alert(`Le champ " Nom" peut contenir 20 caractères au maximum`)
+            return true
+        }
+    }
+    // test ville 
+    function cityFalse(inputValue,champ){
+        if (isEmpty(inputValue,champ)){
+            return true
+        }
+        if (inputValue.length > 20){
+            alert("Le champ ville peut contenir 20 caractères au maximum ")
+            return true
+        }
+    }
+    //test adresse 
+    function adresseFalse(inputValue,champ){
+        if(isEmpty(inputValue,champ)){
+            return true
+        }
+        if (inputValue.length > 30){
+            alert(`Le champ ${champ} ne peut contenir que 30 caractères aux maximum.`)
+            return true
+        }
+    }
+    // test E-mail
+    function emailFalse(inputValue,champ){
+        let RegexArrobase = /[@]/
+        if (isEmpty(inputValue,champ)){
+            return true
+        }       
+        if (!inputValue.match(RegexArrobase)){
+            alert(`votre E-mail ne semble pas être valide.`)
+            return true
+        }
+    }
+    // test panier 
+    function basketFalse(){
+        let storage = JSON.parse (localStorage.getItem("orinoco"))
+        let articleStorage = 0
+        if (storage){
+            for (let i in storage){
+                if (storage[i]){
+                    articleStorage ++
+                }
+            }
+        } 
+        if (articleStorage === 0){
+            alert("Veuillez choisir un article")
+            return true
+        }   
+    }
+} 
 
 
 

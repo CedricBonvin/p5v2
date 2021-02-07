@@ -23,3 +23,4 @@ function nbrArticleHeader(){
 function splitPrice (prix){
     return  ((prix/100).toFixed(2) + " €")
   }
+

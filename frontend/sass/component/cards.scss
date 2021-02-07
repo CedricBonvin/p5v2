@@ -42,9 +42,7 @@
         border-top: solid 1px black;
         font-weight: bold;
     }
-    i::after{
-        content: " €";
-    }
+  
     .check::after{
         
         content: "\f00c";
@@ -73,7 +71,7 @@
     max-width: 370px;
     margin: auto;
     border-radius: 20px;
-    background: #ffffff;
+    background:white;
 
     img{
         width: 100%;
@@ -82,9 +80,7 @@
         text-align: center;
         padding: 20px 0;
     }
-    .prix::after{
-        content: " €";
-    }
+ 
     .wrapperColor{
         // display: flex;
         // flex-flow: wrap;

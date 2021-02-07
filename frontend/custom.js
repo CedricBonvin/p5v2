@@ -5,7 +5,7 @@ fetch("http://localhost:3000/api/teddies/"+recupID()).then(response => response.
     addBasket( result) 
     nbrArticleHeader()       
 })
-// -------------------------     F O N C T I O N S   --------------------------------------//
+/////////////////////    F O N C T I O N S   ///////////////////////
 
 // RECUPERATION DE L'ID
 function recupID(){
@@ -43,7 +43,7 @@ function displayItem(teddy){
     //  boutton ajouter au panier
 
     let bouttonPanier = document.createElement("a");
-    bouttonPanier.innerHTML = `ajouter au panier ${teddy.price / 100}.00 €`;
+    bouttonPanier.innerHTML = `ajouter au panier ${splitPrice(teddy.price)}`;
     bouttonPanier.classList.add ("btn__panier");
     bouttonPanier.setAttribute("href","panier.html")
     bouttonPanier.setAttribute("id","basketButton")
@@ -84,37 +84,48 @@ function addBasket(teddy){
         let choice = dropDownList.selectedIndex
         let colorValue= dropDownList.options[choice].value     // !!!!!!!! pourquoi j'arrive à le récupérer !!!!!
         // création de l'objet
-       let article = {
-           nom: teddy.name,
-           price: teddy.price,
-           colorChoice: colorValue,
-           quantity: 1,
-           id : teddy._id,
-           image :teddy.imageUrl
+        let article = {
+            nom: teddy.name,
+            price: teddy.price,
+            colorChoice: colorValue,
+            quantity: 1,
+            id : teddy._id,
+            image :teddy.imageUrl
        };
        // création du tableau dans le localstorage
-       let articleArray = JSON.parse(localStorage.getItem("orinoco"))
-       if (articleArray){
-        articleArray.push (article)
+        let articleArray = JSON.parse(localStorage.getItem("orinoco"))
+        if(articleArray){
+            articleArray.push (article)
             localStorage.setItem("orinoco",JSON.stringify(articleArray))
-       } else if (!articleArray){
-        articleArray = []
-        articleArray.push(article)
+        }else if (!articleArray){
+            articleArray = []
+            articleArray.push(article)
             localStorage.setItem("orinoco",JSON.stringify(articleArray))
-       }
+        }
     })   
 }
 // AFFICHAGE DE L'ECHANTILLON DE COULEUR
 function displaySampleColor(){
-
-    let sampleColor = document.getElementById("sampleColor")
     //let dropDownList = document.getElementById("dropDownList")      !!!!!!!! Pourquoi j'arrive à le récupérer
-    sampleColor.style.background = dropDownList.options[0].value
     //let colorValue = dropDownList.options[0].value
+    
+    let sampleColor = document.getElementById("sampleColor")
+    sampleColor.style.background = dropDownList.options[0].value
+    if (dropDownList.options[0].value === "Pale brown"){
+        sampleColor.style.background = "#957A52"
+    } 
 
     dropDownList.addEventListener("change",function(){ 
         let choice = dropDownList.selectedIndex
-         let colorValue= dropDownList.options[choice].value
+        let colorValue= dropDownList.options[choice].value
+
+        if (colorValue === "Dark brown"){
+            colorValue =" #654321"
+        }
+        if (colorValue === "Pale brown"){
+            colorValue = "#957A52"
+        } 
+
         sampleColor.style.background = colorValue
     })
 }
@@ -139,82 +150,6 @@ function displaySampleColor(){
 
 
 
-
-
-
-
-
-
-
-
-//     // BOUTTON SUPPRIMER
-
-//     let supprimer = document.createElement("button");
-//     supprimer.innerHTML = ("supprimer");
-//     supprimer.classList.add ("btn");
-//     el.appendChild (supprimer);
-
-//         supprimer.addEventListener("click",function(){
-
-//            if (localStorage.key(i)){
-//             localStorage.removeItem(localStorage.key(i));
-
-//             el.style.display =("none")
-//              } 
-//         //  localStorage.removeItem(localStorage.key(i));
-//         // el.style.display =("none")
-//         })      
-
-//       
-
-//     // ECHANTILLON DE COULEUR
-
-//     let boxCouleur = document.createElement("div")
-//     boxCouleur.setAttribute("id","boxCouleur")
-//     boxCouleur.innerHTML = "Choisissez votre couleur"
-//     el.appendChild(boxCouleur)
-//     boxCouleur.classList.add("boxCouleur")
-    
-//     bouttonCouleur.addEventListener("click",function(){
-        
-//         boxCouleur.style.opacity = "1"
-//         boxCouleur.style.transform = "scaleY(1)"
-//         boxCouleur.style.height = "100%"
-        
-//     })
-
-//     //SELECTION DE LA COULEUR
-
-//     let listeDeroulante = document.createElement("select")
-//     boxCouleur.appendChild(listeDeroulante)
-//     listeDeroulante.style.marginLeft = "5px"
-
-//     for (let i = 0; i < itemJS.colors.length; i++){
-//         let option = document.createElement("option")
-//         option.setAttribute("value",itemJS.colors[i])
-//         option.innerHTML = itemJS.colors[i]
-//         listeDeroulante.appendChild(option);
-       
-//     }
-//     // RENDU COULEUR
-
-//     let renduCouleur = document.createElement("div");
-//     renduCouleur.classList.add("renduCouleur")
-//     boxCouleur.appendChild(renduCouleur)
-  
-//     let choice
-//     let valeurCouleur
-
-//     renduCouleur.style.background = listeDeroulante.options[0].value
-  
-//     listeDeroulante.addEventListener("change",function(){
-        
-//         choice = listeDeroulante.selectedIndex
-        
-//         valeurCouleur = listeDeroulante.options[choice].value
-//         renduCouleur.style.background = valeurCouleur
-//     })
-// }
 
 
 
