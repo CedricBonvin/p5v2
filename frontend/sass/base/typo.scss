@@ -2,13 +2,21 @@
 *{
     box-sizing: border-box;
 }
+html{
+    height: 100%;
+}
 
 
 body{
+    position: relative;
     font-family: roboto, sans-serif;
     font-size: 16px;
-    margin: 0;
+    max-width: 1600px;
+    min-height: 100%;
+    margin: 0 auto;
     padding: 0;
+    box-shadow: 0 0 25px 1px rgb(128, 128, 128);
+
 }
 h1{
     text-align: center;

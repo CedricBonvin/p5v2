@@ -76,6 +76,30 @@ function displayColorWrapper(teddy){
     sampleColor.classList.add("sampleColor")
     wrapperColor.appendChild(sampleColor)
 }
+// AFFICHAGE DE L'ECHANTILLON DE COULEUR
+function displaySampleColor(){
+    //let dropDownList = document.getElementById("dropDownList")      !!!!!!!! Pourquoi j'arrive à le récupérer
+    //let colorValue = dropDownList.options[0].value
+    
+    let sampleColor = document.getElementById("sampleColor")
+    sampleColor.style.background = dropDownList.options[0].value
+    if (dropDownList.options[0].value === "Pale brown"){
+        sampleColor.style.background = "#957A52"
+    } 
+
+    dropDownList.addEventListener("change",function(){ 
+        let choice = dropDownList.selectedIndex
+        let colorValue= dropDownList.options[choice].value
+
+        if (colorValue === "Dark brown"){
+            colorValue =" #654321"
+        }
+        if (colorValue === "Pale brown"){
+            colorValue = "#957A52"
+        } 
+        sampleColor.style.background = colorValue
+    })
+}
 // AJOUT AU PANIER
 function addBasket(teddy){
     let basketButton = document.getElementById("basketButton")
@@ -104,31 +128,7 @@ function addBasket(teddy){
         }
     })   
 }
-// AFFICHAGE DE L'ECHANTILLON DE COULEUR
-function displaySampleColor(){
-    //let dropDownList = document.getElementById("dropDownList")      !!!!!!!! Pourquoi j'arrive à le récupérer
-    //let colorValue = dropDownList.options[0].value
-    
-    let sampleColor = document.getElementById("sampleColor")
-    sampleColor.style.background = dropDownList.options[0].value
-    if (dropDownList.options[0].value === "Pale brown"){
-        sampleColor.style.background = "#957A52"
-    } 
 
-    dropDownList.addEventListener("change",function(){ 
-        let choice = dropDownList.selectedIndex
-        let colorValue= dropDownList.options[choice].value
-
-        if (colorValue === "Dark brown"){
-            colorValue =" #654321"
-        }
-        if (colorValue === "Pale brown"){
-            colorValue = "#957A52"
-        } 
-
-        sampleColor.style.background = colorValue
-    })
-}
 
 
 

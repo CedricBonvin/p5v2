@@ -8,7 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Potta+One&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
     <title>Panier</title>
     <script src="https://kit.fontawesome.com/88cce9f7c7.js" crossorigin="anonymous"></script>
-
 </head>
 
 
@@ -24,46 +23,48 @@
             <i class="fas fa-shopping-cart"></i>        
         </section>
         
-        <section class="wrapperItem">
-            <h2 id="titleBoxPanier" class="titleBoxPanier">Votre panier</h2>
-            <div id="recup"></div>
-            <div id="boxPrixTotal" class="boxPrixTotal">
-                <div>TOTAL :</div>
-                <div id="prixTotal"></div>
-            </div>
-        </section>
-
-        <section class="wrapperForm">
-            <h2>Veuillez remplir le formulaire de contact</h2>
-            <form class="formulaire" id="form">
-                <div>
-                    <label for="lastName" class="formLabel"> Nom :
-                        <input type="text" id="lastName" placeholder="Gautier"  class="formInput">
-                    </label>
+        <div class="content">
+            <section class="wrapperItem">
+                <h2 id="titleBoxPanier" class="titleBoxPanier">Votre panier</h2>
+                <div id="recup"></div>
+                <div id="boxPrixTotal" class="boxPrixTotal">
+                    <div>TOTAL :</div>
+                    <div id="prixTotal"></div>
                 </div>
-                <div>
-                    <label for="firstName" class="formLabel"> Prénom :
-                        <input type="text" id="firstName" placeholder="Jean"  class="formInput">
-                    </label>
-                </div>
-                <div>
-                    <label for="adresse" class="formLabel"> Adresse :
-                        <input type="text" id="adresse" placeholder="Rue du Loisir 45"  class="formInput">
-                    </label>
-                </div>
-                <div>
-                    <label for="city" class="formLabel"> Ville :
-                        <input type="text" id="city" placeholder="Paris"  class="formInput">
-                    </label>
-                </div>
-                <div>
-                    <label for="email" class="formLabel"> E-mail :
-                        <input type="email" id="email" placeholder="Mon_mail@hébergeur.com"  class="formInput">
-                    </label>
-                </div>
-            </form>
-            <div  id="linkConfirmation"><button  type="button" class="btn" id="submit">Procéder au paiement </button></div>
-        </section>    
+            </section>
+    
+            <section class="wrapperForm">
+                <h2>Veuillez remplir le formulaire de contact</h2>
+                <form class="formulaire" id="form">
+                    <div>
+                        <label for="lastName" class="formLabel"> Nom :
+                            <input type="text" id="lastName" placeholder="Gautier"  class="formInput">
+                        </label>
+                    </div>
+                    <div>
+                        <label for="firstName" class="formLabel"> Prénom :
+                            <input type="text" id="firstName" placeholder="Jean"  class="formInput">
+                        </label>
+                    </div>
+                    <div>
+                        <label for="adresse" class="formLabel"> Adresse :
+                            <input type="text" id="adresse" placeholder="Rue du Loisir 45"  class="formInput">
+                        </label>
+                    </div>
+                    <div>
+                        <label for="city" class="formLabel"> Ville :
+                            <input type="text" id="city" placeholder="Paris"  class="formInput">
+                        </label>
+                    </div>
+                    <div>
+                        <label for="email" class="formLabel"> E-mail :
+                            <input type="email" id="email" placeholder="Mon_mail@hébergeur.com"  class="formInput">
+                        </label>
+                    </div>
+                </form>
+                <div  id="linkConfirmation"><button  type="button" class="btn" id="submit">Procéder au paiement </button></div>
+            </section>   
+        </div> 
     </main>
 
     <footer>
@@ -74,6 +75,7 @@
             <i class="fab fa-instagram"></i>
         </div>
     </footer>
+
 
     <script type="text/javascript" src="fonctions.js"></script>
     <script type="text/javascript" src="panier.js"></script>

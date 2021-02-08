@@ -66,10 +66,9 @@
 
 
 .cardCustom{
-    margin: 0px 0;
     padding: 20px $gutter;
     max-width: 370px;
-    margin: auto;
+    margin: 50px auto 150px auto;
     border-radius: 20px;
     background:white;
 
@@ -82,9 +81,6 @@
     }
  
     .wrapperColor{
-        // display: flex;
-        // flex-flow: wrap;
-        // justify-content: space-evenly;
         padding-top: 20px;
         margin-top: 20px;
         border-top: solid 1px black;
@@ -93,9 +89,7 @@
         text-align: center;
 
         select{
-
             margin: 20px 0;
-
         }
     }
     .sampleColor{

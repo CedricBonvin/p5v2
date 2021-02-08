@@ -53,11 +53,19 @@ table {
   box-sizing: border-box;
 }
 
+html {
+  height: 100%;
+}
+
 body {
+  position: relative;
   font-family: roboto, sans-serif;
   font-size: 16px;
-  margin: 0;
+  max-width: 1600px;
+  min-height: 100%;
+  margin: 0 auto;
   padding: 0;
+  box-shadow: 0 0 25px 1px gray;
 }
 
 h1 {
@@ -126,10 +134,14 @@ header .nbrArticleIcone {
 }
 
 footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
   background-color: black;
   color: white;
   width: 100%;
   padding: 20px 0;
+  margin-top: 500px;
   text-align: center;
 }
 footer .boxIcone {
@@ -145,6 +157,7 @@ footer i {
 .confirmation {
   background-color: white;
   padding: 15px;
+  padding-bottom: 200px;
 }
 .confirmation h3 {
   padding: 30px 0 0 0;
@@ -166,7 +179,7 @@ footer i {
 .validationConfirmation .boxConfirm {
   font-size: 1.5em;
   color: #249749;
-  padding: 20px 0;
+  padding: 50px 0;
   border-radius: 10px;
   background-color: #f1fcf5;
 }
@@ -233,10 +246,9 @@ footer i {
 }
 
 .cardCustom {
-  margin: 0px 0;
   padding: 20px 15px;
   max-width: 370px;
-  margin: auto;
+  margin: 50px auto 150px auto;
   border-radius: 20px;
   background: white;
 }
@@ -289,7 +301,7 @@ footer i {
   justify-content: space-evenly;
   flex-flow: row wrap;
   align-items: stretch;
-  padding: 40px 15px;
+  padding: 100px 15px 200px 15px;
   background-color: #f2f2f2;
 }
 
@@ -299,12 +311,14 @@ footer i {
 }
 
 .wrapperItem {
-  padding: 50px 15px;
+  padding: 40px 15px;
+  max-width: 400px;
+  margin-top: 50px;
 }
 
 .btn {
   display: block;
-  margin: 20px auto;
+  margin: 50px auto;
   font-size: 1.5em;
   padding: 10px 20px;
   color: white;
@@ -338,18 +352,30 @@ footer i {
   cursor: pointer;
 }
 
+.content {
+  display: flex;
+  justify-content: space-evenly;
+  flex-flow: row wrap;
+}
+
 .wrapperForm {
   padding: 0 15px;
+  background-color: #f2f2f2;
+  margin-top: 50px;
+  margin-bottom: 200px;
 }
 .wrapperForm h2 {
-  font-size: 1.3em;
-  font-weight: 500;
-  padding: 40px 15px 10px 0;
+  font-size: 1.5em;
+  font-weight: bold;
+  padding: 40px 15px 30px 0;
   line-height: 1.4;
+  text-align: center;
 }
 
 .formulaire {
   padding: 0 15px;
+  max-width: 400px;
+  margin: auto;
   border: solid 1px lightgray;
   border-radius: 20px;
   background-color: #fff;
@@ -386,6 +412,7 @@ footer i {
   font-size: 1.5em;
   border-bottom: solid 1px black;
   padding-bottom: 20px;
+  font-weight: bold;
 }
 
 .emptyBasket {
@@ -401,6 +428,7 @@ footer i {
 
 #recup {
   padding: 0 15px;
+  margin-top: 50px;
 }
 
 .boxItemPanier {
@@ -472,6 +500,7 @@ footer i {
 .fonctionnement ul {
   display: flex;
   flex-flow: row wrap;
+  justify-content: space-evenly;
   align-items: center;
   padding: 20px 0;
 }

@@ -8,7 +8,7 @@ for (let i in ted){
         displayBasicPrice(ted[i],x) 
         displayNewPrice(ted, i,x) 
         supprimer(x,ted,i)
-        order(ted,i) 
+        order(ted) 
     }      
 }
 nbrArticleHeader()
@@ -19,7 +19,7 @@ emptyBasket()
 // AFFICHAGE DES ITEMS
 function displayStorage (teddy) {
    
-    // variable pour les les ID
+    // variable pour les les ID de chaque article
     x++  
 
     // création de la box des items
@@ -93,11 +93,9 @@ function displayBasicPrice (teddy,x){
     boxPrixTotalItem.innerHTML =  splitPrice(teddy.quantity * teddy.price)
 
     //addition des prix total des items 
-
     for (let i of recupPrixTotalItem){
         total += parseInt (i.innerHTML)
     }
-   
     prixTotal.innerHTML = splitPrice(total * 100)
 }
 
@@ -188,7 +186,7 @@ function emptyBasket(){
 }
 
 // ENVOIE DES DONNEES AU SERVEUR
-function order(basket,i){
+function order(basket){
     let buttonSubmit = document.getElementById("submit")
 
     buttonSubmit.addEventListener("click",function(e){
@@ -201,7 +199,7 @@ function order(basket,i){
         let prixTotal = document.getElementById("prixTotal").innerHTML
         let tabProduct = []
         
-        // tableau des iD pour POST
+        // tableau des iD de tous les articles pour POST
         for (let i in basket){
             if (basket[i]){
                 tabProduct.push(basket[i].id)
@@ -216,7 +214,7 @@ function order(basket,i){
                 address: adressInput,
                 city: cityInput,
                 email: emailInput,
-               },
+            },
             products : tabProduct
         }
         let orderParse = JSON.stringify(order.contact)
@@ -289,11 +287,17 @@ function testValide (){
     }
     //test du nom
     function lasteNameFalse (inputValue,champ){
+        let regexString =/^[a-zA-Zé-]+$/
+
         if (isEmpty(inputValue,champ)){
             return true
         }
         if (inputValue.length > 20){
             alert(`Le champ " Nom" peut contenir 20 caractères au maximum`)
+            return true
+        }
+        if (!inputValue.match(regexString)){
+            alert(`Dans le champ "  Nom " Veuillez utiliser seulement des caractères alphabétique`)
             return true
         }
     }
@@ -313,7 +317,7 @@ function testValide (){
             return true
         }
         if (inputValue.length > 30){
-            alert(`Le champ ${champ} ne peut contenir que 30 caractères aux maximum.`)
+            alert(`Le champ " Adresse "ne peut contenir que 30 caractères aux maximum.`)
             return true
         }
     }

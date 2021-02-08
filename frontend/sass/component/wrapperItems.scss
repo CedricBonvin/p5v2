@@ -3,7 +3,7 @@
      justify-content: space-evenly;
      flex-flow: row wrap;
      align-items: stretch;
-     padding: 40px $gutter;
+     padding: 100px $gutter 200px $gutter;
      background-color: #f2f2f2;
  }
 .wrapperItems{
@@ -13,8 +13,7 @@
 }
 
 .wrapperItem{
-    padding: 50px $gutter; 
-    
- 
-
+    padding: 40px $gutter; 
+    max-width: 400px;
+    margin-top: 50px;
 }
