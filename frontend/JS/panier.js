@@ -49,7 +49,6 @@ function displayStorage (teddy) {
     let boxListeDeroulante = document.createElement("div")
     boxQuantite.appendChild(boxListeDeroulante)
     
-
     // titre quantité
     let titreQuantite = document.createElement("span")
     titreQuantite.innerHTML = "Quant.:"
@@ -125,7 +124,7 @@ function displayNewPrice(teddy,index,x){
 }
 
 // BOUTTON SUPPRIMER
-function supprimer(x,teddy,i){
+function supprimer(x,teddy,indexStorage){
 
     let product = document.getElementById(`supp${x}`)
     product.addEventListener("click",function(){
@@ -133,7 +132,7 @@ function supprimer(x,teddy,i){
         let article = document.getElementById(`article${x}`)
         let prixTotal = 0
         
-        delete teddy[i]
+        delete teddy[indexStorage]
         localStorage.setItem("orinoco",JSON.stringify(teddy))
         article.remove()
         
@@ -323,11 +322,15 @@ function testValide (){
     }
     // test E-mail
     function emailFalse(inputValue,champ){
-        let RegexArrobase = /[@]/
+        let RegexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        if (inputValue.length > 50){
+            alert(`Le champ " E-mail "ne peut contenir que 50 caractères aux maximum.`)
+            return true
+        }
         if (isEmpty(inputValue,champ)){
             return true
         }       
-        if (!inputValue.match(RegexArrobase)){
+        if (!inputValue.match(RegexEmail)){
             alert(`votre E-mail ne semble pas être valide.`)
             return true
         }
